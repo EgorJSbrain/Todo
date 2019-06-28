@@ -1,0 +1,87 @@
+.wrapped {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 600px;
+  min-height: 320px;
+  background-color: rgb(251, 251, 251);
+  border-radius: 10px;
+  margin-top: 200px;
+  box-shadow: 10px 10px 25px 8px rgba(0, 0, 0, .2);
+}
+
+.titleblock {
+  background-color:transparent;
+  font-size: 25px;
+  border: none;
+  border-bottom: 2px solid rgb(189, 185, 185);
+  background-color: rgb(251, 251, 251);
+  width: 420px;
+  height: 70px;
+  margin: 5px;
+}
+
+.titleblock:focus {
+  outline:none;
+}
+
+.descriptionblock {
+  background-color:transparent;
+  font-size: 17px;
+  margin: 5px;
+  border: none;
+  border-bottom: 2px solid rgb(189, 185, 185);;
+  background-color: rgb(251, 251, 251);
+  max-width: 420px;
+  min-width: 420px;
+  max-height: 120px;
+  min-height: 120px;
+}
+
+.descriptionblock:focus {
+  outline:none;
+}
+
+.buttonsend {
+  cursor: pointer;
+  padding: 5px;
+  padding-top: 10px;
+  font-size: 18px;
+  color: rgb(27, 23, 23);
+  margin: 5px;
+  background-color: rgb(206, 221, 253);
+  border-radius: 6px;
+  width: 82px;
+  height: 30px;
+  text-align: center;
+  opacity: 0.8;
+}
+
+.buttonsend:hover {
+  color: rgb(27, 25, 25);
+  border-bottom: 4px solid rgb(86, 120, 158);
+  background: rgb(153, 199, 251);
+}
+.buttonsend:active {
+  color: rgb(27, 25, 25);
+  border-bottom: 0px solid rgb(86, 120, 158);
+  background: rgb(220, 228, 238);
+}
+
+.counter {
+  font-family: FreeMono, monospace;
+  font-size: 16px;
+  margin-top: 7px;
+  margin-left: 500px
+}
+
+.todoblock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 600px;
+}
