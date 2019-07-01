@@ -9,7 +9,13 @@ class ToDo extends React.Component {
   
   render() {
     let {todos, text, title} = this.props
-    let todosList = todos.map(todo => <ToDoComponent key={todo._id} title={todo.title} text={todo.text} id={todo._id} deleteTodo={this.props.deleteTodo}/>)
+    let todosList = todos.map(todo => <ToDoComponent key={todo._id} 
+                                                     title={todo.title} 
+                                                     text={todo.text} 
+                                                     id={todo._id} 
+                                                     time={todo.createdAt}
+                                                     todoObject={todo}
+                                                     deleteTodo={this.props.deleteTodo}/>)
     
     return (<>
       <div className={styles.wrapped}>
