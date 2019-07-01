@@ -1,19 +1,11 @@
-import { axios } from '../../axios';
-import { setToDos } from './action';
 import {todoAPI} from './API/todoAPI'
+import { setTodoForEdit, setTitle, setText } from './action';
 
 
-// export const setData = (title, text) => async (dispatch) => {
-//   await todoAPI.addTodo(title, text)
-//   await dispatch(getToDos())
-// };
-
-// export const getToDos = () => async (dispatch) => {
-//   let todos = await todoAPI.getTodos()
-//   await dispatch(setToDos(todos))
-// };
-
-export const deleteTodo = (id) => dispatch => {
-  debugger
-  axios.delete('/delete', {id: id})
+export const getTodoforEdit = (id) => async (dispatch) => {
+  let todos = await todoAPI.getTodos('/todos')
+  let todoForEdit = todos.filter( todo => todo._id === id)[0]
+  dispatch(setTodoForEdit(todoForEdit));
+  dispatch(setTitle(todoForEdit.title));
+  dispatch(setText(todoForEdit.text));
 }

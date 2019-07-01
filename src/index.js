@@ -16,11 +16,11 @@ const rootReducer = combineReducers({
   todo: todoReducer,
 });
 
-const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware();
+const midlewares = [sagaMiddleware, thunk];
+const store = createStore(rootReducer, composeWithDevTools((applyMiddleware(...midlewares))));
 
-const store = createStore(rootReducer, composeWithDevTools((applyMiddleware(sagaMiddleware, thunk))));
-
-sagaMiddleware.run(rootSaga)
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
     <Provider store={store}>

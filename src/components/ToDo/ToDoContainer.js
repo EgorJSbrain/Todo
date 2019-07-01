@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ToDo from './ToDo';
-import { setText, setTitle, fetchTodos, addTodo, deleteTodo } from './action';
-import { getTitle, getTodoList, getText } from './selector';
+import { setText, setTitle, fetchTodos, addTodo, deleteTodo, editTodo } from './action';
+import { getTitle, getTodoList, getText, getFromStateTodoForEdit } from './selector';
 
 
 class ToDoContainer extends React.Component {
@@ -15,16 +15,30 @@ class ToDoContainer extends React.Component {
 
   handleKeyPress = (event) => {
     if (event.key === 'Enter'){
+      if (!!this.props.todo_for_edit) {
+        this.props.editTodo({
+          id: this.props.todo_for_edit._id,
+          title: this.props.title, 
+          text: this.props.text
+        })
+      } else {
       this.props.addTodo({ title: this.props.title, text: this.props.text });
-      this.props.setTitle('')
-      this.props.setText('')
-    }
-  }
+    }}
+  };
   
   onOkHandler = () => {
-    this.props.addTodo({ title: this.props.title, text: this.props.text });
-    this.props.setTitle('')
-    this.props.setText('')
+    if (!!this.props.todo_for_edit) {
+      this.props.editTodo({
+        id: this.props.todo_for_edit._id,
+        title: this.props.title, 
+        text: this.props.text
+      })
+    } else {
+    this.props.addTodo({ 
+      title: this.props.title, 
+      text: this.props.text 
+    });
+    }
   };
 
   onChangeTitleHandler = (e) => {
@@ -51,6 +65,7 @@ const mapStateToProps = state => {
     title: getTitle(state),
     text: getText(state),
     todos: getTodoList(state),
+    todo_for_edit: getFromStateTodoForEdit(state)
   }
 };
 
@@ -59,7 +74,8 @@ const mapDispatchToProps = ({
   setTitle,
   addTodo,
   fetchTodos,
-  deleteTodo
+  deleteTodo,
+  editTodo
 });
 
 const ToDoContainerWithData = connect(mapStateToProps, mapDispatchToProps)(ToDoContainer);

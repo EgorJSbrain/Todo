@@ -18,10 +18,18 @@ export const todoAPI = {
       })
   },
 
+  edit(action) {
+    return axios.post('/edit', {
+      id: action.value.id,
+      title: action.value.title,
+      text: action.value.text
+    }).then(response => response)
+  },
+
   delete(action) {
     return axios.post('/delete', {
       id: action.id
     }).then(response => response)
-  } 
+  },
 
 }
