@@ -1,7 +1,8 @@
 import { SET_TEXT,
          SET_TITLE,
          DELETE_TODO,
-         SET_TODOS } from './constants';
+         SET_TODOS, 
+         SET_TODO_FOR_EDIT} from './constants';
 
 
 
@@ -37,6 +38,12 @@ const todoReducer = (state = initialState, action) => {
       return {
         ...state,
         todos: [...state.todos.filter(todo => todo.id !== action.id)]
+      }
+
+    case SET_TODO_FOR_EDIT:
+      return {
+        ...state,
+        todo_for_edit: action.todoForEdit
       }
 
     default:

@@ -13,3 +13,7 @@ export const getTodoList = state => {
 export const getTodo = state => {
   return state.todo.todo
 };
+
+export const getFromStateTodoForEdit = state => {
+  return state.todo.todo_for_edit
+};

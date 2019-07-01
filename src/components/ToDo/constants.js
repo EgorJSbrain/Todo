@@ -5,3 +5,5 @@ export const FETCH = 'FETCH';
 export const REQUESTED = 'REQUESTED';
 export const ADD_TODO = 'ADD_TODO';
 export const DELETE_TODO = 'DELETE_TODO';
+export const EDIT_TODO = 'EDIT_TODO';
+export const SET_TODO_FOR_EDIT = 'SET_TODO_FOR_EDIT';

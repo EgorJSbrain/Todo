@@ -3,17 +3,20 @@ import { connect } from 'react-redux';
 import styles from './styles/ToDoComponent.module.css';
 import { getTodo } from '../ToDo/selector';
 import { deleteTodo } from '../ToDo/action';
+import { getTodoforEdit } from '../ToDo/thunk';
 
 
 
 class ToDoComponent extends React.Component {
-  
+  onEditTodoHendler = () => {
+    this.props.getTodoforEdit((this.props.id))
+  }
   render() {
     return(
       <div className={styles.wrapper}>
         <div className={styles.ce_block}>
           <div className={styles.edit}
-               onClick={() => alert('edit')}>
+               onClick={() => this.onEditTodoHendler()}>
             <img src={'img/pencil.svg'} alt=''/>
           </div>
           <div className={styles.close}
@@ -42,7 +45,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = ({
-  deleteTodo
+  deleteTodo,
+  getTodoforEdit
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ToDoComponent);
